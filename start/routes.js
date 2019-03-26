@@ -20,7 +20,7 @@ Route.get('/', () => {
   return { greeting: 'Welcome to SMS Management API' }
 })
 
-Route.post('/login', 'UserController.login')
+Route.post('/login', 'UserController.login').validator('LoginUser')
 Route.post('/register', 'UserController.createAccount').validator('RegisterUser')
 Route.resource('messages', 'MessageController').middleware('auth').apiOnly()
 Route.get('/sent', 'MessageController.sentMessages').middleware('auth')
